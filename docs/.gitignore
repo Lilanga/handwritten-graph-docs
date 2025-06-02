@@ -1,0 +1,33 @@
+# Ignore build output
+_build/
+_static/typedoc/
+
+# Ignore Node.js dependencies (should not be in docs folder)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore backup files
+*.bak
+*.backup
+
+# Ignore log files
+*.log

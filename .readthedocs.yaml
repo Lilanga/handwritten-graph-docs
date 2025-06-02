@@ -1,0 +1,30 @@
+version: 2
+
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.11"
+    nodejs: "18"
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+  configuration: docs/conf.py
+  fail_on_warning: true
+
+# If using Sphinx, optionally build your docs in additional formats such as PDF
+formats:
+  - pdf
+  - epub
+
+# Optionally declare the Python requirements required to build your docs
+python:
+  install:
+    - requirements: docs/requirements.txt
+
+# Install Node.js dependencies for TypeScript documentation
+build:
+  jobs:
+    pre_build:
+      - npm install -g typedoc
+      - cd docs && npm install

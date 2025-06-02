@@ -1,0 +1,621 @@
+:root {
+  /* Light mode colors */
+  --primary-color: #2563eb;
+  --secondary-color: #dc2626;
+  --accent-color: #ea580c;
+  --success-color: #16a34a;
+  --warning-color: #ca8a04;
+  --info-color: #0891b2;
+
+  /* Code and syntax highlighting */
+  --code-bg-light: #f8fafc;
+  --code-border-light: #e2e8f0;
+  --code-text-light: #1e293b;
+  --inline-code-bg-light: #f1f5f9;
+  --inline-code-border-light: #cbd5e1;
+
+  /* Tab colors */
+  --tab-bg-light: #f8fafc;
+  --tab-active-light: #ffffff;
+  --tab-border-light: #d1d5db;
+  --tab-hover-light: #f3f4f6;
+
+  /* API documentation colors */
+  --api-section-bg-light: #fafbfc;
+  --api-border-light: #e5e7eb;
+  --api-header-bg-light: #f9fafb;
+
+  /* Neutral grays */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  --code-bg-light: #1e293b;
+  --code-border-light: #334155;
+  --code-text-light: #e2e8f0;
+  --inline-code-bg-light: #334155;
+  --inline-code-border-light: #475569;
+
+  --tab-bg-light: #1e293b;
+  --tab-active-light: #334155;
+  --tab-border-light: #475569;
+  --tab-hover-light: #334155;
+
+  --api-section-bg-light: #1e293b;
+  --api-border-light: #334155;
+  --api-header-bg-light: #334155;
+}
+
+/* Dark mode auto-detection */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --code-bg-light: #1e293b;
+    --code-border-light: #334155;
+    --code-text-light: #e2e8f0;
+    --inline-code-bg-light: #334155;
+    --inline-code-border-light: #475569;
+
+    --tab-bg-light: #1e293b;
+    --tab-active-light: #334155;
+    --tab-border-light: #475569;
+    --tab-hover-light: #334155;
+
+    --api-section-bg-light: #1e293b;
+    --api-border-light: #334155;
+    --api-header-bg-light: #334155;
+  }
+}
+
+/* ==============================================================================
+   Enhanced Code Block Styling
+   ============================================================================== */
+
+/* Code blocks with better contrast and professional appearance */
+.highlight {
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border: 1px solid var(--code-border-light);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.highlight pre {
+  padding: 1.25rem;
+  background: var(--code-bg-light) !important;
+  color: var(--code-text-light) !important;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono",
+    "Source Code Pro", monospace;
+  margin: 0;
+  overflow-x: auto;
+}
+
+/* Enhanced inline code */
+code {
+  background: var(--inline-code-bg-light);
+  color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+  border: 1px solid var(--inline-code-border-light);
+  font-weight: 500;
+}
+
+/* Code in headers should be styled differently */
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary-color);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+}
+
+/* ==============================================================================
+   Professional Tab Styling (Sphinx Tabs)
+   ============================================================================== */
+
+.sphinx-tabs {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab container */
+.sphinx-tabs-tab-container {
+  background: var(--tab-bg-light);
+  border-bottom: 2px solid var(--tab-border-light);
+  padding: 0;
+  display: flex;
+  margin: 0;
+}
+
+/* Individual tabs */
+.sphinx-tabs-tab {
+  background: var(--tab-bg-light);
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  transition: all 0.2s ease;
+  position: relative;
+  margin: 0;
+  border-radius: 0;
+}
+
+.sphinx-tabs-tab:hover {
+  background: var(--tab-hover-light);
+  color: var(--gray-800);
+}
+
+.sphinx-tabs-tab[aria-selected="true"] {
+  background: var(--tab-active-light);
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Tab content panels */
+.sphinx-tabs-panel {
+  border: none;
+  padding: 2rem;
+  background: var(--tab-active-light);
+  margin: 0;
+}
+
+/* Code blocks inside tabs */
+.sphinx-tabs-panel .highlight {
+  margin: 1rem 0;
+}
+
+/* ==============================================================================
+   Professional API Documentation Styling
+   ============================================================================== */
+
+/* API section containers */
+.api-section {
+  margin: 2rem 0;
+  border: 1px solid var(--api-border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--api-section-bg-light);
+}
+
+/* API headers */
+.api-header {
+  background: var(--api-header-bg-light);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--api-border-light);
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+/* Method signatures and class definitions */
+.py.class,
+.py.method,
+.py.function {
+  margin: 2rem 0;
+  border: 1px solid var(--api-border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--api-section-bg-light);
+}
+
+.py.class > dt,
+.py.method > dt,
+.py.function > dt {
+  background: var(--api-header-bg-light);
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  border-bottom: 1px solid var(--api-border-light);
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+}
+
+.py.class > dd,
+.py.method > dd,
+.py.function > dd {
+  padding: 1.5rem;
+  margin: 0;
+}
+
+/* Parameter lists */
+.field-list {
+  margin: 1.5rem 0;
+}
+
+.field-list dt {
+  background: var(--gray-100);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+}
+
+.field-list dd {
+  margin-left: 0;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+/* ==============================================================================
+   Enhanced Admonitions
+   ============================================================================== */
+
+.admonition {
+  border-radius: 8px;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.admonition.note {
+  background: rgba(14, 165, 233, 0.05);
+  border-left-color: var(--info-color);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.admonition.warning {
+  background: rgba(202, 138, 4, 0.05);
+  border-left-color: var(--warning-color);
+  border: 1px solid rgba(202, 138, 4, 0.2);
+}
+
+.admonition.tip {
+  background: rgba(22, 163, 74, 0.05);
+  border-left-color: var(--success-color);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.admonition.important {
+  background: rgba(220, 38, 38, 0.05);
+  border-left-color: var(--secondary-color);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.admonition-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: inherit;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admonition-title::before {
+  content: "";
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.note .admonition-title::before {
+  background: var(--info-color);
+}
+
+.warning .admonition-title::before {
+  background: var(--warning-color);
+}
+
+.tip .admonition-title::before {
+  background: var(--success-color);
+}
+
+/* ==============================================================================
+   Professional Tables
+   ============================================================================== */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--gray-200);
+}
+
+table th {
+  background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+  color: white;
+  font-weight: 700;
+  padding: 1rem;
+  text-align: left;
+  border: none;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: top;
+}
+
+table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==============================================================================
+   Configuration Option Styling
+   ============================================================================== */
+
+.config-option {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: var(--api-section-bg-light);
+  border: 1px solid var(--api-border-light);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.config-option-name {
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.config-option-type {
+  display: inline-block;
+  background: rgba(234, 88, 12, 0.1);
+  color: var(--accent-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+}
+
+.config-option-default {
+  display: inline-block;
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+}
+
+/* ==============================================================================
+   Performance and Version Badges
+   ============================================================================== */
+
+.performance-indicator,
+.version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.performance-indicator.fast,
+.version-badge {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.performance-indicator.slow {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.performance-indicator.very-slow,
+.version-badge.deprecated {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+/* ==============================================================================
+   Chart Examples and Interactive Elements
+   ============================================================================== */
+
+.chart-example {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: var(--gray-50);
+  border-radius: 12px;
+  border: 2px dashed var(--primary-color);
+  position: relative;
+}
+
+.chart-example::before {
+  content: "📊 Interactive Example";
+  position: absolute;
+  top: -0.7rem;
+  left: 1rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.chart-example h4 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.chart-placeholder {
+  height: 250px;
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-500);
+  font-style: italic;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-placeholder::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(37, 99, 235, 0.05) 30%,
+    rgba(37, 99, 235, 0.05) 70%,
+    transparent 70%
+  );
+  background-size: 20px 20px;
+}
+
+/* ==============================================================================
+   Copy Button Enhancement
+   ============================================================================== */
+
+.copybtn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.copybtn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ==============================================================================
+   Navigation and Sidebar Enhancements
+   ============================================================================== */
+
+.furo-navigation .caption {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* ==============================================================================
+   Responsive Design Improvements
+   ============================================================================== */
+
+@media (max-width: 768px) {
+  .sphinx-tabs-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .sphinx-tabs-panel {
+    padding: 1.5rem;
+  }
+
+  .config-option {
+    padding: 1rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .chart-example {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .chart-placeholder {
+    height: 200px;
+    font-size: 1rem;
+  }
+}
+
+/* ==============================================================================
+   Print Optimizations
+   ============================================================================== */
+
+@media print {
+  .sphinx-tabs-tab-container {
+    display: none;
+  }
+
+  .sphinx-tabs-panel {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+
+  .chart-placeholder {
+    border: 2px solid #000 !important;
+    background: white !important;
+  }
+
+  .highlight pre {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .performance-indicator,
+  .version-badge {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+  }
+}

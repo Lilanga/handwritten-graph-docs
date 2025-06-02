@@ -1,0 +1,31 @@
+{
+    "name": "handwritten-graph-docs",
+    "version": "1.0.5",
+    "description": "Documentation build tools for Handwritten Graph Library",
+    "private": true,
+    "scripts": {
+        "build": "make html",
+        "build:prod": "make prod",
+        "dev": "make livehtml",
+        "clean": "make clean",
+        "linkcheck": "make linkcheck",
+        "typedoc": "make typedoc",
+        "serve": "python -m http.server 8080 --directory _build/html",
+        "install-deps": "pip install -r requirements.txt && npm install"
+    },
+    "devDependencies": {
+        "typedoc": "^0.25.4",
+        "typescript": "^5.4.5"
+    },
+    "engines": {
+        "node": ">=16.0.0",
+        "python": ">=3.8"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Lilanga/handwritten-graph-docs.git",
+        "directory": "docs"
+    },
+    "author": "Lilanga Gamage",
+    "license": "MIT"
+}
